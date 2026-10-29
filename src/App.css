@@ -889,3 +889,35 @@ thead {
 @media(max-width:900px){.auth-layout{grid-template-columns:1fr;max-width:500px;gap:36px;padding:48px 0}.auth-copy{display:none}.auth-form-column{justify-self:center}.auth-footer{max-width:500px}.auth-screen{padding:22px 20px 18px}}
 
 @media(max-width:520px){.auth-secure-label{font-size:0}.auth-secure-label .auth-live-dot{width:8px;height:8px}.auth-glass-card{padding:23px 18px;border-radius:22px}.auth-card-title{font-size:22px}.auth-footer{font-size:9px}.auth-layout{padding:36px 0}.auth-brand{font-size:20px}}
+.ep-assistant-launcher {
+  position: fixed !important;
+  right: 24px !important;
+  left: auto !important;
+  bottom: 24px !important;
+  z-index: 99999 !important;
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+}
+
+.ep-assistant-panel {
+  position: fixed !important;
+  right: 16px !important;
+  left: auto !important;
+  bottom: 80px !important;
+  z-index: 99998 !important;
+  width: min(390px, calc(100vw - 32px)) !important;
+}
+
+@media (max-width: 600px) {
+  .ep-assistant-launcher {
+    right: 16px !important;
+    bottom: 16px !important;
+  }
+
+  .ep-assistant-panel {
+    right: 12px !important;
+    bottom: 72px !important;
+    width: calc(100vw - 24px) !important;
+    max-height: calc(100dvh - 96px) !important;
+  }
+}
