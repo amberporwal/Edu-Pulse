@@ -921,3 +921,36 @@ thead {
     max-height: calc(100dvh - 96px) !important;
   }
 }
+/* EduPulse AI Assistant — viewport positioning fix */
+.ep-assistant-launcher {
+  position: fixed !important;
+  inset: auto 20px 20px auto !important;
+  z-index: 99999 !important;
+  width: max-content !important;
+  max-width: calc(100vw - 32px) !important;
+  box-sizing: border-box !important;
+  transform: none;
+}
+
+.ep-assistant-panel {
+  position: fixed !important;
+  inset: auto 20px 80px auto !important;
+  z-index: 99998 !important;
+  width: min(390px, calc(100vw - 40px)) !important;
+  max-height: calc(100dvh - 110px) !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 600px) {
+  .ep-assistant-launcher {
+    right: 16px !important;
+    bottom: 16px !important;
+  }
+
+  .ep-assistant-panel {
+    right: 12px !important;
+    bottom: 72px !important;
+    width: calc(100vw - 24px) !important;
+    max-height: calc(100dvh - 96px) !important;
+  }
+}
