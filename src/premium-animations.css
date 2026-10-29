@@ -1,0 +1,198 @@
+/* EduPulse Premium Motion Pack — safe CSS-only enhancements */
+:root {
+  --ep-motion-fast: 180ms;
+  --ep-motion-base: 280ms;
+  --ep-motion-slow: 650ms;
+  --ep-ease: cubic-bezier(.2, .75, .25, 1);
+}
+
+html { scroll-behavior: smooth; }
+.app-shell { animation: ep-page-in 650ms var(--ep-ease) both; }
+.sidebar { animation: ep-sidebar-in 650ms var(--ep-ease) both; }
+.brand { animation: ep-fade-up 550ms 80ms var(--ep-ease) both; }
+.navigation .nav-item { animation: ep-fade-up 500ms var(--ep-ease) both; }
+.navigation .nav-item:nth-child(1) { animation-delay: 100ms; }
+.navigation .nav-item:nth-child(2) { animation-delay: 150ms; }
+.navigation .nav-item:nth-child(3) { animation-delay: 200ms; }
+.navigation .nav-item:nth-child(4) { animation-delay: 250ms; }
+.navigation .nav-item:nth-child(5) { animation-delay: 300ms; }
+
+.topbar {
+  animation: ep-fade-down 500ms var(--ep-ease) both;
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+.page-content { animation: ep-page-in 650ms 70ms var(--ep-ease) both; }
+.welcome-row { animation: ep-fade-up 600ms 100ms var(--ep-ease) both; }
+.stats-grid > * { animation: ep-fade-up 600ms var(--ep-ease) both; }
+.stats-grid > *:nth-child(1) { animation-delay: 100ms; }
+.stats-grid > *:nth-child(2) { animation-delay: 170ms; }
+.stats-grid > *:nth-child(3) { animation-delay: 240ms; }
+.stats-grid > *:nth-child(4) { animation-delay: 310ms; }
+.content-grid > *, .page-content > .panel, .page-content > .faq-page {
+  animation: ep-fade-up 650ms 220ms var(--ep-ease) both;
+}
+
+.stat-card, .panel, .faq-page {
+  transform: translateZ(0);
+  transition: transform 260ms var(--ep-ease), box-shadow 260ms var(--ep-ease), border-color 260ms ease;
+}
+.stat-card:hover, .panel:hover, .faq-page:hover { transform: translateY(-4px); }
+.nav-item {
+  transition: transform 220ms var(--ep-ease), background 220ms ease, color 220ms ease, box-shadow 220ms ease !important;
+}
+.nav-item:hover { transform: translateX(4px); }
+button, .ep-assistant-suggestions button {
+  transition: transform 180ms var(--ep-ease), box-shadow 220ms ease, filter 220ms ease, background-color 220ms ease;
+}
+button:active { transform: translateY(1px) scale(.985); }
+.primary-button, .ep-assistant-launcher { position: relative; overflow: hidden; }
+.primary-button::after, .ep-assistant-launcher::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-130%) skewX(-18deg);
+  width: 55%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.24), transparent);
+  pointer-events: none;
+}
+.primary-button:hover::after, .ep-assistant-launcher:hover::after {
+  transform: translateX(240%) skewX(-18deg);
+  transition: transform 700ms ease;
+}
+.search-box, input, select, textarea {
+  transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+.search-box:focus-within, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: none;
+  border-color: #818cf8 !important;
+  box-shadow: 0 0 0 4px rgba(99,102,241,.12), 0 6px 18px rgba(65,79,150,.07) !important;
+}
+tbody tr { transition: background-color 180ms ease, transform 180ms ease; }
+tbody tr:hover { background: rgba(99,102,241,.045) !important; }
+.bar-fill, .progress-fill, .mini-progress i {
+  transform-origin: left center;
+  animation: ep-bar-grow 900ms 180ms var(--ep-ease) both;
+}
+.donut { animation: ep-donut-in 850ms 150ms var(--ep-ease) both; }
+.ep-assistant-launcher {
+  animation: ep-fade-up 650ms 400ms var(--ep-ease) both, ep-soft-pulse 3.8s 1.5s ease-in-out infinite;
+}
+.ep-assistant-panel { transform-origin: bottom right; animation: ep-chat-open 280ms var(--ep-ease) both !important; }
+.ep-assistant-bubble { animation: ep-message-in 260ms var(--ep-ease) both; }
+.ep-assistant-suggestions button:hover { transform: translateY(-2px); border-color: #a5b4fc; background: #eef2ff; }
+.auth-screen { animation: ep-page-in 700ms var(--ep-ease) both; }
+.auth-orb-one { animation: ep-orb-float 12s ease-in-out infinite alternate; }
+.auth-orb-two { animation: ep-orb-float 15s ease-in-out infinite alternate-reverse; }
+.auth-copy { animation: ep-fade-up 700ms 100ms var(--ep-ease) both; }
+.auth-form-column { animation: ep-auth-card-in 750ms 180ms var(--ep-ease) both; }
+.auth-glass-card { transition: border-color 300ms ease, box-shadow 300ms ease, transform 300ms var(--ep-ease); }
+.auth-glass-card:hover { border-color: rgba(184,190,255,.3); box-shadow: 0 32px 110px rgba(0,0,0,.46), 0 0 40px rgba(99,102,241,.08), inset 0 1px 0 rgba(255,255,255,.08); }
+.auth-brand-mark, .auth-loading-mark { animation: ep-mark-glow 3.4s ease-in-out infinite; }
+.auth-live-dot { animation: ep-live-blink 2s ease-in-out infinite; }
+
+@keyframes ep-page-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes ep-fade-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes ep-fade-down { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes ep-sidebar-in { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes ep-auth-card-in { from { opacity: 0; transform: translateY(22px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes ep-chat-open { from { opacity: 0; transform: translateY(12px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes ep-message-in { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes ep-bar-grow { from { transform: scaleX(.04); opacity: .45; } to { transform: scaleX(1); opacity: 1; } }
+@keyframes ep-donut-in { from { opacity: .3; transform: scale(.82) rotate(-16deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
+@keyframes ep-orb-float { from { transform: translate3d(0,-12px,0) scale(.98); } to { transform: translate3d(20px,18px,0) scale(1.06); } }
+@keyframes ep-soft-pulse { 0%,100% { box-shadow: 0 5px 14px rgba(50,48,130,.24), inset 0 1px 0 rgba(255,255,255,.28); } 50% { box-shadow: 0 8px 24px rgba(79,70,229,.32), 0 0 0 7px rgba(99,102,241,.055), inset 0 1px 0 rgba(255,255,255,.28); } }
+@keyframes ep-mark-glow { 0%,100% { box-shadow: 0 8px 30px rgba(99,102,241,.25); } 50% { box-shadow: 0 8px 38px rgba(99,102,241,.48), 0 0 0 5px rgba(129,140,248,.06); } }
+@keyframes ep-live-blink { 0%,100% { opacity: 1; } 50% { opacity: .45; box-shadow: 0 0 5px rgba(94,234,212,.5); } }
+
+@media (max-width: 700px) {
+  .topbar { position: relative; }
+  .stat-card:hover, .panel:hover, .faq-page:hover { transform: none; }
+  .ep-assistant-panel { right: 12px !important; bottom: 68px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+
+/* EduPulse auth polish: reliable motion + dark Clerk form */
+.auth-screen {
+  position: relative;
+  animation: ep-page-in 700ms var(--ep-ease, cubic-bezier(.2,.75,.25,1)) both;
+}
+.auth-screen::before { animation: ep-auth-ambient 16s ease-in-out infinite alternate; }
+.auth-brand-row { animation: ep-fade-down 600ms ease both; }
+.auth-brand-mark { animation: ep-mark-glow 3.4s ease-in-out infinite; }
+.auth-copy { animation: ep-fade-up 750ms 100ms var(--ep-ease, cubic-bezier(.2,.75,.25,1)) both; }
+.auth-form-column { animation: ep-auth-card-in 850ms 160ms var(--ep-ease, cubic-bezier(.2,.75,.25,1)) both; }
+.auth-glass-card {
+  border-color: rgba(184,190,255,.24);
+  box-shadow: 0 28px 100px rgba(0,0,0,.42), 0 0 45px rgba(99,102,241,.08), inset 0 1px 0 rgba(255,255,255,.07);
+  transition: transform 350ms ease, border-color 350ms ease, box-shadow 350ms ease;
+}
+.auth-glass-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(184,190,255,.38);
+  box-shadow: 0 34px 110px rgba(0,0,0,.48), 0 0 52px rgba(99,102,241,.12), inset 0 1px 0 rgba(255,255,255,.08);
+}
+/* Clerk class names can differ by version; target the form's common wrappers safely. */
+.auth-glass-card .cl-card,
+.auth-glass-card .cl-rootBox,
+.auth-glass-card .cl-signIn-root,
+.auth-glass-card .cl-signUp-root,
+.auth-glass-card [class*="cl-card"],
+.auth-glass-card [class*="cl-rootBox"] {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+.auth-glass-card .cl-footer,
+.auth-glass-card [class*="cl-footer"] {
+  background: rgba(7,11,25,.38) !important;
+  border-color: rgba(166,177,211,.12) !important;
+}
+.auth-glass-card .cl-formFieldInput,
+.auth-glass-card input,
+.auth-glass-card [class*="formFieldInput"] {
+  color: #f8faff !important;
+  background: rgba(5,9,22,.72) !important;
+  border: 1px solid rgba(164,177,215,.28) !important;
+}
+.auth-glass-card input::placeholder { color: #7e89a7 !important; opacity: 1 !important; }
+.auth-glass-card .cl-formButtonPrimary,
+.auth-glass-card button[class*="formButtonPrimary"] {
+  border: 0 !important;
+  color: #fff !important;
+  background: linear-gradient(100deg,#8065f5,#5b5eea 58%,#3289df) !important;
+  box-shadow: 0 8px 22px rgba(91,94,234,.22) !important;
+}
+.auth-glass-card .cl-formButtonPrimary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.auth-glass-card .cl-socialButtonsBlockButton,
+.auth-glass-card button[class*="socialButtonsBlockButton"] {
+  color: #f2f4ff !important;
+  background: rgba(255,255,255,.045) !important;
+  border: 1px solid rgba(185,194,225,.2) !important;
+}
+.auth-glass-card .cl-dividerText,
+.auth-glass-card [class*="dividerText"] { color: #8792b0 !important; }
+.auth-glass-card .cl-formFieldLabel,
+.auth-glass-card [class*="formFieldLabel"] { color: #c5cce0 !important; }
+.auth-glass-card .cl-footerActionText,
+.auth-glass-card .cl-identityPreviewText { color: #a9b2ce !important; }
+.auth-glass-card .cl-footerActionLink,
+.auth-glass-card .cl-formFieldAction__link { color: #b7a9ff !important; }
+@keyframes ep-auth-ambient {
+  from { transform: scale(1) translate3d(0,0,0); }
+  to { transform: scale(1.08) translate3d(1.5%, -1%, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .auth-screen::before, .auth-brand-mark, .auth-copy, .auth-form-column {
+    animation: none !important;
+  }
+}
